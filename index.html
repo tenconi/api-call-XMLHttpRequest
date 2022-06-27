@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="shortcut icon"
+      href="https://tenco.com.ar/favicon.png"
+      type="image/x-icon"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tenco: API Call con XMLHttpRequest</title>
+    <meta name="author" content="tenco | Daniel Tenconi" />
+    <!-- ↓↓↓ CSS ↓↓↓ -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <!-- ↓↓↓ HTML ↓↓↓ -->
+  <body>
+    <div class="container">
+      <header>
+        <a href="https://tenco.com.ar/" target="_blank"
+          ><img
+            src="https://tenco.com.ar/static/media/tenco_logo_light.7ce41bedf5039967ad9dd15ddc1e811d.svg"
+            alt="tenco"
+            class="brand"
+          />
+          <p><em>by Daniel Tenconi</em></p></a
+        >
+      </header>
+
+      <h2 class="title">Call Api with <em>XMLHttpRequest</em></h2>
+      <p class="description"></p>
+
+      <div class="result">
+        <div class="col" id="show">
+          <h3 class="result__title">Results:</h3>
+          <!-- show JS results -->
+        </div>
+
+        <div class="col" id="code">
+          <h3 class="result__title">Code:</h3>
+          <samp
+            ><code
+              >const API_URL = "<span class="coment">here go the url</span
+              >";<br />
+              const <span class="green">xhr</span> =
+              <span class="green">new XMLHttpRequest()</span>;<br /><br />
+              function <span class="lightblue">onRequestApi()</span>{<br />
+
+              if(<span class="green"
+                >this.readyState === 4 && this.status === 200</span
+              >){<br />
+
+              const data =
+              <span class="green">JSON.parse(this.response)</span>;<br />
+              <br />
+              let show = document.getElementById('show');<br />
+              const list = data.map(U => `&lt;li&gt;${U.username} - ${U.email} -
+              ${U.company.name}&lt;/li&gt;`)<br />
+
+              show.innerHTML += `&lt;ul&gt;${list}&lt;/ul&gt;`;<br />
+              }<br />
+              }<br />
+              xhr.addEventListener('load',
+              <span class="lightblue">onRequestApi</span>);<br />
+              <span class="green">xhr</span
+              ><span class="pink">.open</span>('GET', `${API_URL}`);<br />
+              <span class="green">xhr</span><span class="pink">.send()</span>
+              <br /> </code
+          ></samp>
+        </div>
+      </div>
+    </div>
+
+    <!-- ↓↓↓ JavaScript ↓↓↓ -->
+    <script src="./app.js"></script>
+  </body>
+</html>
